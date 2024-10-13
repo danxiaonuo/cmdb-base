@@ -100,6 +100,9 @@ RUN set -eux && \
    locale-gen zh_CN.UTF-8 && localedef -f UTF-8 -i zh_CN zh_CN.UTF-8 && locale-gen && \
    /bin/zsh
 
+# 拷贝文件
+COPY ["./conf/supervisor", "/etc/supervisor"]
+
 # ***** 升级 setuptools 版本 *****
 RUN set -eux && \
     wget --no-check-certificate https://bootstrap.pypa.io/pip/2.7/get-pip.py -O /tmp/get-pip.py && \
