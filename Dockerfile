@@ -111,4 +111,7 @@ RUN set -eux && \
     pip3 config set install.trusted-host mirrors.aliyun.com && \
     pip3 install --upgrade pip setuptools wheel pycryptodome lxml cython beautifulsoup4 requests distro && \
     update-alternatives --install /usr/bin/python python /usr/bin/python2 1 && \
+    rm /usr/bin/pip && \
+    update-alternatives --force --install /usr/bin/pip pip /usr/local/bin/pip2 1 && \
+    sed -i 's#python3#python2#' /usr/local/bin/pip && \
     rm -r /root/.cache && rm -rf /tmp/*
